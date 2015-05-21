@@ -16,7 +16,7 @@ namespace CSharpOutline
     [Export(typeof(ITaggerProvider))]
     [TagType(typeof(IOutliningRegionTag))]
     [ContentType("CSharp")]
-    [ContentType("Razor.C#")]
+    [ContentType("RazorCSharp")]
     internal sealed class CSOutliningTaggerProvider : ITaggerProvider
     {
         [Import]
