@@ -132,8 +132,8 @@ namespace CSharpOutline
         public static TextRegion TryCreateRegion(SnapshotParser parser)
         {
             SnapshotPoint point = parser.CurrentPoint;
-            ClassificationSpan span = parser.CurrentSpan;
-            if (span == null)
+            //ClassificationSpan span = parser.CurrentSpan;
+            //if (span == null)
             {
                 char c = point.GetChar();
                 switch (c)
@@ -153,9 +153,9 @@ namespace CSharpOutline
         public bool TryComplete(SnapshotParser parser)
         {
             SnapshotPoint point = parser.CurrentPoint;
-            ClassificationSpan span = parser.CurrentSpan;
+            //ClassificationSpan span = parser.CurrentSpan;
 
-            if (span == null)
+            //if (span == null)
             {
                 char c = point.GetChar();
                 if (RegionType == TextRegionType.Block && c == '}')

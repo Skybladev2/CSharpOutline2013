@@ -14,28 +14,28 @@ namespace CSharpOutline
     {
         private ITextSnapshot Snapshot;
         public SnapshotPoint CurrentPoint { get; private set; }
-        //public ITextSnapshotLine CurrentLine { get { return CurrentPoint.GetContainingLine(); } }
-        //classifier
-        private IClassifier Classifier;
-        private IList<ClassificationSpan> ClassificationSpans;
-        /// <summary>
-        /// A dictionary (span start => span)
-        /// </summary>
-        private Dictionary<int, ClassificationSpan> SpanIndex = new Dictionary<int, ClassificationSpan>();
+        ////public ITextSnapshotLine CurrentLine { get { return CurrentPoint.GetContainingLine(); } }
+        ////classifier
+        //private IClassifier Classifier;
+        //private IList<ClassificationSpan> ClassificationSpans;
+        ///// <summary>
+        ///// A dictionary (span start => span)
+        ///// </summary>
+        //private Dictionary<int, ClassificationSpan> SpanIndex = new Dictionary<int, ClassificationSpan>();
 
-        public ClassificationSpan CurrentSpan { get; private set; }
+        //public ClassificationSpan CurrentSpan { get; private set; }
 
         public SnapshotParser(ITextSnapshot snapshot, IClassifier classifier)
         {
             Snapshot = snapshot;
-            Classifier = classifier;
-            ClassificationSpans = Classifier.GetClassificationSpans(new SnapshotSpan(Snapshot, 0, snapshot.Length));
-            foreach (ClassificationSpan s in ClassificationSpans)
-                SpanIndex.Add(s.Span.Start.Position, s);
+            //Classifier = classifier;
+            //ClassificationSpans = Classifier.GetClassificationSpans(new SnapshotSpan(Snapshot, 0, snapshot.Length));
+            //foreach (ClassificationSpan s in ClassificationSpans)
+            //    SpanIndex.Add(s.Span.Start.Position, s);
 
             CurrentPoint = Snapshot.GetLineFromLineNumber(0).Start;
-            if (SpanIndex.ContainsKey(0))
-                CurrentSpan = SpanIndex[0];
+            //if (SpanIndex.ContainsKey(0))
+            //    CurrentSpan = SpanIndex[0];
         }
 
         /// <summary>
@@ -46,12 +46,13 @@ namespace CSharpOutline
         {
             if (!AtEnd())
             {
-                CurrentPoint = CurrentSpan != null ? CurrentSpan.Span.End : CurrentPoint + 1;
+                //CurrentPoint = CurrentSpan != null ? CurrentSpan.Span.End : CurrentPoint + 1;
 
-                if (SpanIndex.ContainsKey(CurrentPoint.Position))
-                    CurrentSpan = SpanIndex[CurrentPoint.Position];
-                else
-                    CurrentSpan = null;
+                //if (SpanIndex.ContainsKey(CurrentPoint.Position))
+                //    CurrentSpan = SpanIndex[CurrentPoint.Position];
+                //else
+                //    CurrentSpan = null;
+                CurrentPoint+=1;
                 return true;
             }
             return false;
